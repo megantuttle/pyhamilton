@@ -296,12 +296,6 @@ defaults_by_cmd = { # 'field':None indicates field is required when assembling c
     'BarcodeReader_Read':('BC_READ',{
 
     }),
-    'InitializeCognexScanner':('COGNEX_INITIALIZE',{
-        
-        'cognexIP':'', # ()
-        'cognexType':'', # ()
-        'cognexAddress':'' # ()
-    }),
 }
 
 """All of the command names supported out of the box, mapped to their default params.

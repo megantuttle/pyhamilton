@@ -114,8 +114,6 @@ variable movementType;
 variable collisionControl;
 variable gripMode;
 variable showCollisionCheckDialog;
-global device HxFan ("STAR_OEM_Test.lay", "HxFan", hslTrue);
-variable fanSpeed;
 variable persistant;
 variable refillAfterEmpty;
 variable chamber1LiquidChange;
@@ -2885,130 +2883,6 @@ SendHHSReturnToServer(commandFromServer, o_stepReturn, Translate(""), Translate(
 // {{ 839 1 0 "19cfb02b_845f_4bc4_83fd05266ea128b4" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 840 1 0 "67dcb608_2751_40ce_8b7e4a0603faf2dc" "{586C3429-F931-405f-9938-928E22C90BFA}"
-
-// }} ""
-// {{ 841 1 0 "0f4bf0f0_7250_4df4_ad0fed77d22c4e31" "{586C3429-F931-405f-9938-928E22C90BFA}"
-
-// }} ""
-// {{ 842 1 0 "8c27106a_1679_43a9_bf5395da0b449aab" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-if (commandFromServer == "HxFanSet")
-{
-// }} ""
-// {{{ 843 1 0 "b4ddaff1_bbb9_4494_8b1bbd7274a5f7ee" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-HSLJsonLib::GetIntegerProperty(objJSONFromServer, Translate("deviceNumber"), deviceNumber);
-// }} ""
-// {{{ 844 1 0 "4c112600_c077_4cd1_97f013ebd6ba3dda" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-HSLJsonLib::GetIntegerProperty(objJSONFromServer, Translate("persistant"), persistant);
-// }} ""
-// {{{ 845 1 0 "3e95190c_440f_432c_aaa7fd3a2fb355a5" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-HSLJsonLib::GetIntegerProperty(objJSONFromServer, Translate("simulate"), simulate);
-// }} ""
-// {{{ 846 1 0 "1e8f47c7_db5a_4fa4_aee7981e3b80ca64" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-JSON_GetFloatValue(Translate("fanSpeed"), fanSpeed);
-// }} ""
-// {{ 847 1 0 "6e4ff03e_f972_4901_8442f6e992f211a7" "{3293659E-F71E-472f-AFB4-6A674E32B114}"
-onerror goto errLabel_AA4197CCBE624255B3C96A32C1894C99 ;
-err.Clear();
-// }} ""
-// {{ 848 1 0 "126ff61c_704e_4f65_956d45a1882c292c" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-o_stepReturn = 0;
-// }} ""
-// {{ 849 1 0 "10161df1_6a13_4efe_8e94e9efb47fea5a" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-if (simulate == 0)
-{
-// }} ""
-// {{ 850 1 0 "13409ed4_ce79_4ef9_89deb34df8b6dd6a" "HxFan:{6FE28420-ECCC-4DE2-8731-3A3A5D98EC19}"
-{
-	HxFan.Simulate("13409ed4_ce79_4ef9_89deb34df8b6dd6a"); // Simulate
-}
-// }} ""
-// {{ 851 1 0 "10161df1_6a13_4efe_8e94e9efb47fea5a" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-}
-else
-{
-// }} ""
-// {{ 852 1 0 "be3ae73e_7395_494a_9aed80ff221436dc" "HxFan:{6FE28420-ECCC-4DE2-8731-3A3A5D98EC19}"
-{
-	HxFan.Simulate("be3ae73e_7395_494a_9aed80ff221436dc"); // Simulate
-}
-// }} ""
-// {{ 853 1 0 "10161df1_6a13_4efe_8e94e9efb47fea5a" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-}
-// }} ""
-// {{ 854 1 0 "ffdf7428_8946_4751_8ec8a7e00f208208" "HxFan:{419861B2-AD5B-4F2E-8025-46B0E593A024}"
-{
-	HxFan.SetComPort("ffdf7428_8946_4751_8ec8a7e00f208208"); // SetComPort
-}
-// }} ""
-// {{ 855 1 0 "1506decc_f2bf_47a0_a90687ef59450828" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-if (persistant == 0)
-{
-// }} ""
-// {{ 856 1 0 "d081b2a8_b3ef_4a06_9d8d4d8c6cd1dd39" "HxFan:{166B9764-268C-487A-8D8C-EC3ED594717C}"
-{
-	HxFan.SetContinuousMode("d081b2a8_b3ef_4a06_9d8d4d8c6cd1dd39"); // SetContinuousMode
-}
-// }} ""
-// {{ 857 1 0 "1506decc_f2bf_47a0_a90687ef59450828" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-}
-else
-{
-// }} ""
-// {{ 858 1 0 "4914f72b_ecb0_4ab4_b458a744727e1642" "HxFan:{166B9764-268C-487A-8D8C-EC3ED594717C}"
-{
-	HxFan.SetContinuousMode("4914f72b_ecb0_4ab4_b458a744727e1642"); // SetContinuousMode
-}
-// }} ""
-// {{ 859 1 0 "1506decc_f2bf_47a0_a90687ef59450828" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-}
-// }} ""
-// {{ 860 1 0 "203cb0c4_cb6f_42c2_a34aa62a646c29cc" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-if (fanSpeed == 0)
-{
-// }} ""
-// {{ 861 1 0 "cef636fc_366e_46f7_9a8e1e25f716fa31" "HxFan:{1581574C-5388-4E48-BC78-FEE50E8DCE05}"
-{
-	HxFan.SetFanOff("cef636fc_366e_46f7_9a8e1e25f716fa31"); // SetFanOff
-}
-// }} ""
-// {{ 862 1 0 "203cb0c4_cb6f_42c2_a34aa62a646c29cc" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-}
-else
-{
-// }} ""
-// {{ 863 1 0 "f2bbd127_49ad_44c1_aa03eba6244b4cfc" "HxFan:{C3B1A3F9-BD5A-4660-842E-35830B4E80CA}"
-{
-	HxFan.SetFanSpeed("f2bbd127_49ad_44c1_aa03eba6244b4cfc"); // SetFanSpeed
-}
-// }} ""
-// {{ 864 1 0 "203cb0c4_cb6f_42c2_a34aa62a646c29cc" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-}
-// }} ""
-// {{ 865 1 0 "6e4ff03e_f972_4901_8442f6e992f211a7" "{3293659E-F71E-472f-AFB4-6A674E32B114}"
-errLabel_AA4197CCBE624255B3C96A32C1894C99 : {}
-onerror goto 0;
-if (err.GetId() != 0)   /* skip handler if no error */
-{
-// }} ""
-// {{ 866 1 0 "8f5e46a2_b896_4dbc_a8eb3d63e6ee3d3d" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-o_stepReturn = 1;
-// }} ""
-// {{ 867 1 0 "6e4ff03e_f972_4901_8442f6e992f211a7" "{3293659E-F71E-472f-AFB4-6A674E32B114}"
-}   /* end if from skip handler if no error */
-// }} ""
-// {{{ 868 1 0 "0c83267c_5eb8_4165_96bd827e6dad924b" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-SendHHSReturnToServer(commandFromServer, o_stepReturn, Translate(""), Translate(""), Translate(""), id);
-// }} ""
-// {{ 869 1 0 "8c27106a_1679_43a9_bf5395da0b449aab" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-}
-// }} ""
-// {{ 870 1 0 "0f4bf0f0_7250_4df4_ad0fed77d22c4e31" "{586C3429-F931-405f-9938-928E22C90BFA}"
-
-// }} ""
-// {{ 871 1 0 "67dcb608_2751_40ce_8b7e4a0603faf2dc" "{586C3429-F931-405f-9938-928E22C90BFA}"
-
-// }} ""
 // {{ 872 1 0 "1e8b0bba_85dd_48f7_a69e247338f695c8" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
@@ -3044,7 +2918,7 @@ o_stepReturn = 0;
 // {{ 882 1 0 "123d7b87_745f_4511_a797d08711d13361" "ML_STAR:{19AC7FF8-2C7A-4555-AE3B-3A8CB9466EF3}"
 {
 	variable arrRetValues[];
-	arrRetValues = ML_STAR._19AC7FF8_2C7A_4555_AE3B_3A8CB9466EF3("123d7b87_745f_4511_a797d08711d13361"); // Head96EmptyWasher
+	arrRetValues = ML_STAR._19AC7FF8_2C7A_4555_AE3B_3A8CB9466EF3( "123d7b87_745f_4511_a797d08711d13361" ); // Head96EmptyWasher
 }
 // }} ""
 // {{ 883 1 0 "3f9d8157_5931_4cda_afa101739a3a0f82" "{3293659E-F71E-472f-AFB4-6A674E32B114}"
@@ -3108,4 +2982,4 @@ STAR_OEM_TOOLKIT::_ExitLibrary();
 // }} ""
 
 
-// $$author=Hamilton$$valid=0$$time=2019-03-18 18:17$$checksum=14112bd1$$length=085$$
+// $$author=mtuttle.admin$$valid=1$$time=2022-03-28 15:20$$checksum=7b4f960e$$length=090$$

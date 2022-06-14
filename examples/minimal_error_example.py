@@ -2,7 +2,8 @@ import os
 from pyhamilton import (HamiltonInterface, LayoutManager, ResourceType, Tip96,
     INITIALIZE, PICKUP, NoTipError, HardwareError)
 
-layfile = os.path.abspath(os.path.join('.', 'minimal_error_example.lay'))
+current_file_directory = os.path.dirname(os.path.abspath(__file__))
+layfile = os.path.abspath(os.path.join(current_file_directory, 'minimal_error_example.lay'))
 lmgr = LayoutManager(layfile)
 
 tip_name_from_line = lambda line: LayoutManager.layline_first_field(line)
@@ -11,7 +12,7 @@ tips_type = ResourceType(Tip96, tip_name_condition, tip_name_from_line)
 tips = lmgr.assign_unused_resource(tips_type)
 
 if __name__ == '__main__':
-    with HamiltonInterface() as hammy:
+    with HamiltonInterface(simulate=True) as hammy:
         print('INITIALIZED!!', hammy.wait_on_response(hammy.send_command(INITIALIZE)))
         try:
             id = hammy.send_command(PICKUP, labwarePositions=str(tips.layout_name()) + ', 1;')

@@ -5,7 +5,8 @@ from pyhamilton import (HamiltonInterface, LayoutManager, ResourceType, Tip96, P
     INITIALIZE, PICKUP, EJECT, ASPIRATE, DISPENSE,
     HamiltonError)
 
-layfile = os.path.abspath(os.path.join('.', 'single_ch_aspirate_dispense.lay'))
+current_file_directory = os.path.dirname(os.path.abspath(__file__))
+layfile = os.path.abspath(os.path.join(current_file_directory, 'single_ch_aspirate_dispense.lay'))
 lmgr = LayoutManager(layfile)
 
 tip_name_from_line = lambda line: LayoutManager.layline_first_field(line)
@@ -22,7 +23,7 @@ if __name__ == '__main__':
     tip_labware_pos = tips.layout_name() + ', ' + tips.position_id(tip_no) + ';'
     well_labware_pos = plate.layout_name() + ', ' + plate.position_id(well_no) + ';'
     liq_class = 'HighVolumeFilter_Water_DispenseJet_Empty'
-    with HamiltonInterface() as hammy:
+    with HamiltonInterface(simulate=True) as hammy:
         hammy.wait_on_response(hammy.send_command(INITIALIZE))
         ids = [hammy.send_command(PICKUP, labwarePositions=tip_labware_pos),
                hammy.send_command(ASPIRATE, labwarePositions=well_labware_pos, volumes=100.0, liquidClass=liq_class),
