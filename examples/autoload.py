@@ -1,4 +1,6 @@
 import os
+import sys
+sys.path.insert(0,"C:\\localDev\\pyhamilton")
 from pyhamilton import (HamiltonInterface, LayoutManager, ResourceType, Plate96,
     INITIALIZE, COGNEX_INITIALIZE,
     HamiltonError)
@@ -13,15 +15,18 @@ if __name__ == '__main__':
 
         # default cognex settings
         cognexIP = ""
-        cognexType = "" # default: "Unknown (probably DM260)"
-        cognexAddress = "" # default should be COM5
+        cognexType = "Unknown (probably DM260)"  # default
+        cognexAddress = "COM5"  # default 
 
         # TODO read cognex settings from config file
         
         # initialize cognex
         cmd_dict = {"cognexIP": cognexIP, "cognexType": cognexType, "cognexAddress": cognexAddress}
-        id = hammy.wait_on_response(hammy.send_command(COGNEX_INITIALIZE, **cmd_dict))
-        print(hammy.wait_on_response(id, raise_first_exception=True))
-        
+        id = hammy.send_command(COGNEX_INITIALIZE, **cmd_dict)
+        try:
+            print(hammy.wait_on_response(id, raise_first_exception=True))
+        except HamiltonError as he:
+            print(he)
+        print("cognex initialized!!!!")
 
         # call autoload function

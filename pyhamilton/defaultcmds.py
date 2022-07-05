@@ -298,9 +298,9 @@ defaults_by_cmd = { # 'field':None indicates field is required when assembling c
     }),
     'InitializeCognexScanner':('COGNEX_INITIALIZE',{
         
-        'cognexIP':'', # ()
-        'cognexType':'', # ()
-        'cognexAddress':'' # ()
+        'cognexIP':'', # (string)
+        'cognexType':'', # (string)
+        'cognexAddress':'' # (string)
     }),
 }
 
