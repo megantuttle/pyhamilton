@@ -302,6 +302,11 @@ defaults_by_cmd = { # 'field':None indicates field is required when assembling c
         'cognexType':'', # (string)
         'cognexAddress':'' # (string)
     }),
+    'CognexAutoload':('COGNEX_AUTOLOAD',{
+        
+        'scannerID':'', # (string)
+        'carrierName':'', # (string)
+    }),
 }
 
 """All of the command names supported out of the box, mapped to their default params.

@@ -7,9 +7,13 @@ layfile = os.path.abspath(os.path.join(current_file_directory, '96_head_pickup_e
 lmgr = LayoutManager(layfile)
 
 tip_name_from_line = lambda line: LayoutManager.layline_first_field(line)
+print(tip_name_from_line)
 tip_name_condition = lambda line: LayoutManager.field_starts_with(tip_name_from_line(line), 'STF_L_')
+print(tip_name_condition)
 tips_type = ResourceType(Tip96, tip_name_condition, tip_name_from_line)
+print(tips_type)
 tips = lmgr.assign_unused_resource(tips_type)
+print(tips)
 
 if __name__ == '__main__':
     with HamiltonInterface(simulate=True) as hammy:
