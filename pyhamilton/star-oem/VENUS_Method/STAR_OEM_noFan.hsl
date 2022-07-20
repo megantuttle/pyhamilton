@@ -8,7 +8,6 @@
  namespace _Method { #include "ASWStandard\\TraceLevel\\TraceLevel.hsl" } 
  namespace _Method { #include "HslHamHeaterShakerLib.hsl" } 
  namespace _Method { #include "HSLJson\\HSLJson.hsl" } 
-#include "STAR_OEM_Test.res"
  namespace _Method { #include "STAR_OEM_toolkit.hs_" } 
  namespace _Method { #include "STAR_OEM_toolkit.hs_" } 
  namespace _Method { #include "C:\\localDev\\pyhamilton\\library\\HSLAppsLib.hsl" } 
@@ -16,6 +15,7 @@
  namespace _Method { #include "CognexScanner\\HSLCognexDataMan.hsl" } 
  namespace _Method { #include "Common\\AdaptiveTracing.hsl" } 
  namespace _Method { #include "Common\\HSLPECommon.hsl" } 
+#include "STAR_OEM_Test.res"
 /* {{ 2 "LibraryInsertLine" "" */ // }} ""
 variable loopCounterMain;
 variable msg;
@@ -172,6 +172,8 @@ variable strScannedBarcodes;
 variable carrierBarcode;
 variable strCarrierName;
 variable strCarrierBarcode;
+sequence newSeq;
+sequence seqEmpty;
 /* {{ 2 "VariableInsertLine" "" */ // }} ""
 // {{ 2 "TemplateIncludeBlock" ""
  namespace _Method { #include "HSLMETEDLib.hs_" } 
@@ -3536,54 +3538,57 @@ HSLJsonLib::GetStringProperty(objJSONFromServer, Translate("scannerID"), intScan
 // {{{ 1028 1 0 "1a30aaa1_1940_4c51_8bb5b4ba021d2f79" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLJsonLib::GetStringProperty(objJSONFromServer, Translate("carrierName"), strCarrierName);
 // }} ""
-// {{{ 1029 1 0 "9ff643d4_90e5_430a_bf0f982cac2938ab" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqRemoveAll(ML_STAR.seqEmpty);
+// {{{ 1029 1 0 "7f916da9_3a18_4801_86bdd2b2de6713ec" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(seqEmpty);
 // }} ""
 // {{ 1030 1 0 "b35540ee_a769_4597_a047572b218ce010" "{4900C1F7-0FB7-4033-8253-760BDB9354DC}"
 arrayOfBarcodes.SetSize(0);
 // }} ""
-// {{{ 1031 1 0 "b4c85a14_d0f0_4244_b16ef2c530e4e9dd" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-cognexScan(ML_STAR, intScannerID, SOURCE, strCarrierName, Translate("********"), arrayOfBarcodes, ML_STAR.seqEmpty, 0);
+// {{{ 1031 1 0 "06a7b80d_475b_4a5d_931948f4b358e0c9" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TrcTrace(Translate("======================="), strCarrierName);
 // }} ""
-// {{{ 1032 1 0 "f62070d5_a536_4f2e_82b9b0cacabfffae" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+// {{{ 1032 1 0 "0571cef2_abd7_415e_bb5ce70cd506979a" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+cognexScan(ML_STAR, intScannerID, SOURCE, strCarrierName, Translate("********"), arrayOfBarcodes, seqEmpty, 0);
+// }} ""
+// {{{ 1033 1 0 "f62070d5_a536_4f2e_82b9b0cacabfffae" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
 ArrayToString(arrayOfBarcodes, strScannedBarcodes);
 // }} ""
-// {{{ 1033 1 0 "07a6293c_152c_41e0_aac65737cb8dc336" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+// {{{ 1034 1 0 "07a6293c_152c_41e0_aac65737cb8dc336" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
 SendStepReturnToServer(commandFromServer, strScannedBarcodes, Translate(""), Translate(""), Translate(""), id);
 // }} ""
-// {{ 1034 1 0 "3f109378_88ad_4908_b22d4652ee8a900a" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 1035 1 0 "3f109378_88ad_4908_b22d4652ee8a900a" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 1035 1 0 "051f4c85_82ea_4522_bff0accd2c2b0f32" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 1036 1 0 "051f4c85_82ea_4522_bff0accd2c2b0f32" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 1036 1 0 "1a2f39c8_cc2e_4c18_bcae9dc5be30d2e2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 1037 1 0 "1a2f39c8_cc2e_4c18_bcae9dc5be30d2e2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLJsonLib::Release(objJSONFromServer);
 // }} ""
-// {{ 1037 1 0 "17c082ea_8224_4d43_86dc6db5af649261" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 1038 1 0 "17c082ea_8224_4d43_86dc6db5af649261" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 1038 1 0 "05e3e61b_1dfb_4c6d_a8dbb000a5bbb5a3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 1039 1 0 "05e3e61b_1dfb_4c6d_a8dbb000a5bbb5a3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (commandFromServer == "end")
 {
 // }} ""
-// {{{ 1039 1 0 "6db67a5a_6aa2_4087_875823acfff0fac4" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+// {{{ 1040 1 0 "6db67a5a_6aa2_4087_875823acfff0fac4" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
 SendTextMessageToServer(Translate("Good Bye!"));
 // }} ""
-// {{ 1040 1 0 "4c7e40d6_02a6_451d_b28230ec71e40ce1" "{B31F3533-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 1041 1 0 "4c7e40d6_02a6_451d_b28230ec71e40ce1" "{B31F3533-5D80-11d4-A5EB-0050DA737D89}"
 break;
 // }} ""
-// {{ 1041 1 0 "05e3e61b_1dfb_4c6d_a8dbb000a5bbb5a3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 1042 1 0 "05e3e61b_1dfb_4c6d_a8dbb000a5bbb5a3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 1042 1 0 "17c082ea_8224_4d43_86dc6db5af649261" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 1043 1 0 "17c082ea_8224_4d43_86dc6db5af649261" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 1043 1 0 "b573bcbb_6bb4_4b28_b1ca14b0d3cad22e" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 1044 1 0 "b573bcbb_6bb4_4b28_b1ca14b0d3cad22e" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 }
 }
 // }} ""
-// {{{ 1044 1 0 "6fb90145_24c3_46ba_88b839e0215d0bf2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 1045 1 0 "6fb90145_24c3_46ba_88b839e0215d0bf2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHttp::Release(objHttp);
 // }} ""
 // {{ 2 "AutoExitBlock" ""
@@ -3594,4 +3599,4 @@ STAR_OEM_TOOLKIT::_ExitLibrary();
 // }} ""
 
 
-// $$author=mtuttle.admin$$valid=0$$time=2022-07-08 09:23$$checksum=1dce60ed$$length=090$$
+// $$author=mtuttle.admin$$valid=0$$time=2022-07-11 14:18$$checksum=fd07af40$$length=090$$

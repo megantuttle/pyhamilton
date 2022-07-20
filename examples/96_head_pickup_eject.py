@@ -1,10 +1,12 @@
 import os
+import sys
+sys.path.insert(0,"C:\\localDev\\pyhamilton")
 from pyhamilton import (HamiltonInterface, LayoutManager, ResourceType, Tip96,
     INITIALIZE, PICKUP96, EJECT96)
 
 current_file_directory = os.path.dirname(os.path.abspath(__file__))
 layfile = os.path.abspath(os.path.join(current_file_directory, '96_head_pickup_eject.lay'))
-lmgr = LayoutManager(layfile)
+lmgr = LayoutManager(layfile, install=False)
 
 tip_name_from_line = lambda line: LayoutManager.layline_first_field(line)
 print(tip_name_from_line)
@@ -27,3 +29,4 @@ if __name__ == '__main__':
          # Or the command fields can be specified with keyword arguments
         id = hammy.send_command(EJECT96, labwarePositions=labware_poss)
         print(hammy.wait_on_response(id, raise_first_exception=True))
+        

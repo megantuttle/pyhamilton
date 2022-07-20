@@ -1,0 +1,14 @@
+ namespace _Method { #include "HSLUtilLib.hsl" }
+
+variable pathname;
+variable windowstyle;
+variable concurrency;
+
+namespace _Method { method main() {
+   pathname = "C:\\localDev\\pyhamilton\\test.bat";
+   windowstyle = hslShow;
+   concurrency = hslAsynchronous;
+   Shell(pathname, windowstyle, concurrency);
+   return;
+}}
+// $$author=mtuttle.admin$$valid=0$$time=2022-07-11 11:11$$checksum=432d528c$$length=092$$
